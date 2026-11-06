@@ -1,4 +1,5 @@
 import random
+from play import Play
 import sys
 import os
 import io
@@ -36,6 +37,9 @@ try:
 except pygame.error as e:
     print(f"Erreur de chargement d'image: {e}")
 game_state = "MENU"
+playbutton = Play(256, 256)
+playbutton.rect.x = 100
+playbutton.rect.y = 100 
 running = True
 while running:
     # -------------------------------------------------------------
@@ -85,6 +89,7 @@ while running:
             screen.blit(appicon, logo_rect)
         else:
             screen.blit(appicon,(screen.get_width()//2-128,50),((appicon.get_width()//2)-128,(appicon.get_height()//2)-128,256,256))
+        screen.blit(playbutton.image, playbutton.rect)
     elif game_state == "GAME":
         pass
     elif game_state == "GAMEOVER":
